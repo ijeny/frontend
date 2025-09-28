@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>percabangan bersarang (nested)</title>
+</head>
+
+<body>
+    <script>
+        var username = prompt("username");
+        var password = prompt("password:");
+
+        if (username == "stikom") {
+            if (password == "mahasiswa") {
+                document.write("<h2>Selamat dtang di STIKOM PGRI Banyuwangi</h2>");
+            } else {
+                document.write("<p>password salah, silahkan coba lagi!</p>");
+            }
+        } else {
+            document.write("<p>anda tidak terdaftar!</p>");
+        }
+    </script>
+</body>
+
+</html>
