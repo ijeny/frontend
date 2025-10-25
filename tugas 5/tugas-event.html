@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUGAS EVENT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+        }
+
+        .judul {
+            text-align: center;
+            padding-bottom: 20px;
+            color: #343a40;
+            font-weight: 700;
+        }
+
+        .card {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .isi-card {
+            padding: 20px;
+        }
+
+        .form-control,
+        .form-select,
+        .pilihan-form {
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ced4da;
+        }
+
+        .btn {
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+
+        .macam-form {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        .label-form {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .centang-form {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .centang-input {
+            margin-right: 5px;
+        }
+
+        .centang-form-label {
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .baris-macam-form {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+        }
+
+        .baris-macam {
+            flex-basis: 30%;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .baris-macam .label-form {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .text-pilihan {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed #ced4da;
+        }
+
+        .judul-daftar-harga {
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 0;
+            border-bottom: 1px solid #e9ecef;
+            background-color: #f1f3f5;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            color: #022353;
+        }
+
+        .text-harga-motor,
+        .text-aksesoris {
+            font-weight: 700;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px dotted #adb5bd;
+            color: #343a40;
+        }
+
+        .list-harga,
+        .list-merk2 {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .list-merk {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f8f9fa;
+        }
+
+        .harga-merk {
+            font-weight: 600;
+            color: #4a28a7;
+        }
+
+        .kotak-pembelian {
+            order: 1;
+            /* menampilkan formulir pembelian pada mobile */
+        }
+
+        .kotak-harga {
+            order: 2;
+            /* menampilkan daftar harga setelah formulir pada mobile */
+        }
+
+        @media (min-width: 992px) {
+            .kotak-pembelian {
+                order: 1;
+                width: 50%;
+                padding-right: 10px;
+            }
+
+            .kotak-harga {
+                order: 2;
+                width: 50%;
+                padding-left: 10px;
+            }
+
+            .row {
+                display: flex;
+                flex-wrap: nowrap;
+            }
+        }
+
+        select.pilihan-form {
+            display: block;
+        }
+
+        .badge{
+            color: #022353;
+            font-size: medium;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="row">
+            <div class="judul-web col-12">
+                <h1 class="judul">PROGRAM PENJUALAN MOTOR MORI J</h1>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="kotak-pembelian col-lg-6 col-md-10">
+                <div class="card">
+                    <div class="isi-card">
+                        <form>
+                            <div class="macam-form">
+                                <label class="label-form" for="merk">Merk Motor</label>
+                                <select name="merk" id="merk" class="pilihan-form form-select">
+                                    <option value="honda">Honda</option>
+                                    <option value="yamaha">Yamaha</option>
+                                    <option value="suzuki">Suzuki</option>
+                                </select>
+                            </div>
+
+                            <div class="macam-form">
+                                <label class="label-form">Aksesoris</label>
+                                <div class="centang-form form-check form-check-inline">
+                                    <input type="checkbox" name="aksesoris" id="aksesoris1" value="velg"
+                                        class="centang-input form-check-input">
+                                    <label for="aksesoris1" class="centang-form-label form-check-label">Velg</label>
+                                </div>
+                                <div class="centang-form form-check form-check-inline">
+                                    <input type="checkbox" name="aksesoris" id="aksesoris2" value="helm"
+                                        class="centang-input form-check-input">
+                                    <label for="aksesoris2" class="centang-form-label form-check-label">Helm</label>
+                                </div>
+                                <div class="centang-form form-check form-check-inline">
+                                    <input type="checkbox" name="aksesoris" id="aksesoris3" value="jaket"
+                                        class="centang-input form-check-input">
+                                    <label for="aksesoris3" class="centang-form-label form-check-label">Jaket</label>
+                                </div>
+                            </div>
+
+                            <div class="macam-form">
+                                <label class="label-form">Pembayaran</label>
+                                <div class="centang-form form-check form-check-inline">
+                                    <input type="radio" name="pembayaran" id="pembayaran1" value="tunai"
+                                        class="centang-input form-check-input">
+                                    <label for="pembayaran1" class="centang-form-label form-check-label">Tunai</label>
+                                </div>
+                                <div class="centang-form form-check form-check-inline">
+                                    <input type="radio" name="pembayaran" id="pembayaran2" value="kredit"
+                                        class="centang-input form-check-input">
+                                    <label for="pembayaran2" class="centang-form-label form-check-label">Kredit</label>
+                                </div>
+                            </div>
+
+                            <div class="baris-macam-form">
+                                <div class="baris-macam">
+                                    <label class="label-form">Harga</label>
+                                    <div>
+                                        <span id="harga" class="badge">0</span>
+                                    </div>
+                                </div>
+                                <div class="baris-macam">
+                                    <label class="label-form">Bunga/Diskon</label>
+                                    <div>
+                                        <span id="diskon" class="badge">0</span>
+                                    </div>
+                                </div>
+                                <div class="baris-macam">
+                                    <label class="label-form">Total</label>
+                                    <div>
+                                        <span id="total" class="badge">0</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-pilihan">
+                                <button type="submit" class="btn btn-primary me-2">Proses</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kotak-harga col-lg-6 col-md-10">
+                <div class="card">
+                    <div class="judul-pembelian">
+                        <h5 class="judul-daftar-harga">Daftar Harga</h5>
+                    </div>
+                    <div class="isi-card">
+                        <h6 class="text-harga-motor">Harga Motor</h6>
+                        <div class="list-harga">
+                            <div class="list-merk">
+                                Honda
+                                <span class="harga-merk">Rp 15.000.000</span>
+                            </div>
+                            <div class="list-merk">
+                                Yamaha
+                                <span class="harga-merk">Rp 14.000.000</span>
+                            </div>
+                            <div class="list-merk">
+                                Suzuki
+                                <span class="harga-merk">Rp 13.000.000</span>
+                            </div>
+                        </div>
+
+                        <h6 class="text-aksesoris">Aksesoris</h6>
+                        <div class="list-merk2">
+                            <div class="list-merk">
+                                Velg
+                                <span class="harga-merk">Rp 450.000</span>
+                            </div>
+                            <div class="list-merk">
+                                Helm
+                                <span class="harga-merk">Rp 250.000</span>
+                            </div>
+                            <div class="list-merk">
+                                Jaket
+                                <span class="harga-merk">Rp 300.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //data harga motor
+        const hargaMotor = {
+            'honda': 15000000,
+            'yamaha': 14000000,
+            'suzuki': 13000000
+        };
+
+        //data harga aksesoris
+        const hargaAksesoris = {
+            'velg': 450000,
+            'helm': 250000,
+            'jaket': 300000
+        };
+
+        //memanggil elemen
+        const merkSelect = document.getElementById('merk');
+        const aksesorisCheckboxes = document.querySelectorAll('input[name="aksesoris"]');
+        const pembayaranRadios = document.querySelectorAll('input[name="pembayaran"]');
+        const hargaSpan = document.getElementById('harga');
+        const diskonSpan = document.getElementById('diskon');
+        const totalSpan = document.getElementById('total');
+        const submitButton = document.querySelector('button[type="submit"]');
+        const resetButton = document.querySelector('button[type="reset"]');
+
+        function hitungHarga() {
+            let totalHarga = 0;
+            let diskonPersen = 0;
+
+            //harga motor yang dipilih
+            const merkPick = merkSelect.value;
+            totalHarga += hargaMotor[merkPick] || 0;
+
+            //harga aksesoris yang dipilih
+            aksesorisCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalHarga += hargaAksesoris[checkbox.value] || 0;
+                }
+            });
+
+            //menentukan diskon/bunga berdasarkan pembayaran
+            pembayaranRadios.forEach(radio => {
+                if (radio.checked) {
+                    // MEMPERBAIKI BUG: Membandingkan dengan 'tunai' (lowercase) bukan 'Tunai'
+                    if (radio.value === 'tunai') {
+                        diskonPersen = 10;
+                    } else if (radio.value === 'kredit') {
+                        diskonPersen = -15;
+                    }
+                }
+            });
+
+            //menampilkan harga dan diskon
+            hargaSpan.textContent = totalHarga.toLocaleString('id-ID', {
+                style: 'currency',
+                currency: 'IDR'
+            });
+
+            diskonSpan.textContent = diskonPersen + '%';
+
+            //hitung total keseluruhan
+            let totalKeseluruhan;
+            if (diskonPersen > 0) {
+                //diskon jika tunai
+                const diskon = totalHarga * (diskonPersen / 100);
+                totalKeseluruhan = totalHarga - diskon;
+            } else if (diskonPersen < 0) {
+                //diskon jika kredit
+                const bunga = totalHarga * (Math.abs(diskonPersen) / 100);
+                totalKeseluruhan = totalHarga + bunga;
+            } else {
+                //tidak ada diskon/bunga
+                totalKeseluruhan = totalHarga;
+            }
+
+            totalSpan.textContent = totalKeseluruhan.toLocaleString('id-ID', {
+                style: 'currency',
+                currency: 'IDR'
+            });
+        }
+
+        merkSelect.addEventListener('change', hitungHarga);
+
+        aksesorisCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', hitungHarga);
+        });
+
+        pembayaranRadios.forEach(radio => {
+            radio.addEventListener('change', hitungHarga);
+        });
+
+        submitButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            hitungHarga();
+
+            const merkTerpilih = merkSelect.value;
+            const aksesorisTerpilih = Array.from(aksesorisCheckboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+            const pembayaranTerpilih = Array.from(pembayaranRadios)
+                .find(radio => radio.checked)?.value;
+
+            const aksesorisDisplay = aksesorisTerpilih.length > 0 ?
+                aksesorisTerpilih.map(a => a.charAt(0).toUpperCase() + a.slice(1)).join(', ') :
+                'Tidak Ada';
+            const pembayaranDisplay = pembayaranTerpilih ?
+                pembayaranTerpilih.charAt(0).toUpperCase() + pembayaranTerpilih.slice(1) :
+                'Belum dipilih';
+
+            alert(`Detail Pembelian:
+            Merk Motor: ${merkTerpilih.charAt(0).toUpperCase() + merkTerpilih.slice(1)}
+            Aksesoris: ${aksesorisDisplay}
+            Pembayaran: ${pembayaranDisplay}
+            Harga Awal: ${hargaSpan.textContent}
+            Diskon/Bunga: ${diskonSpan.textContent}
+            Total: ${totalSpan.textContent}`);
+        });
+
+        resetButton.addEventListener('click', function () {
+            merkSelect.selectedIndex = 0;
+            aksesorisCheckboxes.forEach(checkbox => checkbox.checked = false);
+            pembayaranRadios.forEach(radio => radio.checked = false);
+            hargaSpan.textContent = '0';
+            diskonSpan.textContent = '0';
+            totalSpan.textContent = '0';
+            hitungHarga();
+        });
+
+        //hitung harga awal
+        hitungHarga();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
