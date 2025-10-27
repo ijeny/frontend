@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Select Bertingkat</title>
+</head>
+
+<body>
+    <h1>Pilih Lokasi</h1>
+    <label for="benua">Pilih Benua: </label>
+    <select id="benua" onchange="updateNegara()"></select>
+    <br><br>
+
+    <label for="negara">Pilih Negara: </label>
+    <select id="negara">
+        <option value="">-- Pilih Benua Dahulu --</option>
+    </select>
+
+    <p id="hasil"></p>
+
+    <script src="data-lokasi.js"></script>
+</body>
+
+</html>

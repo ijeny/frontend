@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <title>Perhitungan Biaya Kirim Paket</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #afc1d1;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .judul-program,
+        .judul-info {
+            text-align: center;
+            color: #0f1f2e;
+            font-weight: 800;
+        }
+
+        .container-form {
+            padding: 20px;
+            border: 1px solid #afc1d1;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .bagian-form {
+            padding: 5px;
+        }
+
+        label {
+            display: contents;
+            margin-bottom: 5px;
+            padding-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #afc1d1;
+            font-size: small;
+        }
+
+        .TotalBiaya {
+            background-color: #ffffff;
+            border: 1px solid #afc1d1;
+            color: #224d73;
+            padding: 10px;
+            font-weight: bold;
+            font-size: small;
+        }
+
+        .container-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #edf7ff;
+            border-radius: 5px;
+        }
+
+        .judul-biaya-jarak,
+        .judul-biaya-berat {
+            text-align: left;
+            font-weight: 700;
+            color: #0f1f2e;
+        }
+
+        .tabel-info {
+            width: 100%;
+        }
+
+        .tabel-info td {
+            border: 1px solid #314f6a;
+            background-color: white;
+            text-align: center;
+            font-size: small;
+        }
+
+        .tabel-info th {
+            border: 1px solid #314f6a;
+            text-align: center;
+            font-size: small;
+            background-color: #224d73;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container-form">
+            <h2 class="judul-program">Perhitungan Biaya Kirim Paket</h2>
+            <form class="form" id="form">
+                <div class="bagian-form">
+                    <label for="resi">Nomor Resi</label>
+                    <input type="text" id="resi" name="resi" required>
+                </div>
+                <div class="bagian-form">
+                    <label for="berat">Berat Barang</label>
+                    <input type="text" id="berat" name="berat" required>
+                </div>
+                <div class="bagian-form">
+                    <label for="asal">Kota Asal</label>
+                    <select id="asal" name="KotaAsal" required>
+                        <option value="">Pilih Kota Asal</option>
+                    </select>
+                </div>
+                <div class="bagian-form">
+                    <label for="tujuan">Kota Tujuan</label>
+                    <select id="tujuan" name="KotaTujuan" required>
+                        <option value="">Pilih Kota Tujuan</option>
+                    </select>
+                </div>
+                <div class="bagian-form">
+                    <label for="total">Total Biaya Pengiriman</label>
+                    <div class="TotalBiaya">
+                        Rp. <span id="totalBiaya">0</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="container-info">
+            <h3 class="judul-info">Keterangan Biaya</h3>
+
+            <h4 class="judul-biaya-berat">Biaya Berat:</h4>
+            <table class="tabel-info" cellspacing="0" cellpading="10">
+                <tr>
+                    <th>Berat</th>
+                    <th>Harga</th>
+                </tr>
+                <tr>
+                    <td>0 - 1 kg</td>
+                    <td>Rp 1.500</td>
+                </tr>
+                <tr>
+                    <td>1,1 kg - 5 kg</td>
+                    <td>Rp 2.500</td>
+                </tr>
+                <tr>
+                    <td>5,1 kg - 10 kg</td>
+                    <td>Rp 3.500</td>
+                </tr>
+                <tr>
+                    <td>Diatas 10 kg</td>
+                    <td>Rp 4.500</td>
+                </tr>
+            </table>
+
+            <h4 class="judul-biaya-jarak">Biaya Jarak:</h4>
+            <table class="tabel-info" cellspacing="0" cellpading="10">
+                <tr>
+                    <th>Kota</th>
+                    <th>Banyuwangi</th>
+                    <th>Jember</th>
+                    <th>Probolinggo</th>
+                    <th>Surabaya</th>
+                </tr>
+                <tr>
+                    <td>Banyuwangi</td>
+                    <td>Rp 5.000</td>
+                    <td>Rp 7.000</td>
+                    <td>Rp 10.000</td>
+                    <td>Rp 15.000</td>
+                </tr>
+                <tr>
+                    <td>Jember</td>
+                    <td>Rp 7.500</td>
+                    <td>Rp 5.000</td>
+                    <td>Rp 8.500</td>
+                    <td>Rp 12.500</td>
+                </tr>
+                <tr>
+                    <td>Probolinggo</td>
+                    <td>Rp 10.000</td>
+                    <td>Rp 8.500</td>
+                    <td>Rp 5.000</td>
+                    <td>Rp 6.500</td>
+                </tr>
+                <tr>
+                    <td>Surabaya</td>
+                    <td>Rp 15.000</td>
+                    <td>Rp 12.500</td>
+                    <td>Rp 6.500</td>
+                    <td>Rp 5.000</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        var kota = ["Banyuwangi", "Jember", "Probolinggo", "Surabaya"];
+
+        // ambil elemen kota asal & tujuan
+        var asalSelect = document.getElementById("asal");
+        var tujuanSelect = document.getElementById("tujuan");
+
+        for (var i = 0; i < kota.length; i++) {
+            asalSelect.innerHTML += "<option value='" + kota[i] + "'>" + kota[i] + "</option>";
+            tujuanSelect.innerHTML += "<option value='" + kota[i] + "'>" + kota[i] + "</option>";
+        }
+
+        // tabel biaya jarak
+        var biayaJarak = [
+            [5000, 7000, 10000, 15000], // banyuwangi
+            [7500, 5000, 8500, 12500], // jember
+            [10000, 8500, 5000, 6500], // probolinggo
+            [15000, 12500, 6500, 5000] // surabaya
+        ];
+
+        // untuk hhitung total biaya 
+        function hitungBiaya() {
+            var berat = document.getElementById("berat").value;
+            var asal = asalSelect.selectedIndex - 1;
+            var tujuan = tujuanSelect.selectedIndex - 1;
+            var biayaBerat = 0;
+            var biayaJarak = 0;
+
+            // hitung biaya berat
+            if (berat > 0 && berat <= 1) {
+                biayaBerat = 1500;
+            } else if (berat <= 5) {
+                biayaBerat = 2500;
+            } else if (berat <= 10) {
+                biayaBerat = 3500;
+            } else if (berat > 10) {
+                biayaBerat = 4500;
+            }
+
+            // hitung biaya jarak
+            if (asal >= 0 && tujuan >= 0) {
+                biayaJarak = biayaJarak[asal][tujuan];
+            }
+
+            // menampilkan total
+            document.getElementById("totalBiaya").innerHTML = biayaBerat + biayaJarak;
+        }
+
+        // menjalankan saat input berubah
+        document.getElementById("berat").onkeyup = hitungBiaya;
+        asalSelect.onchange = hitungBiaya;
+        tujuanSelect.onchange = hitungBiaya;
+    </script>
+</body>
+
+</html>
