@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Baju online</title>
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">RAJEZ<span>world</span></div>
+
+        <div class="search-box">
+            <input type="text" placeholder="Cari produk terbaik...">
+            <button>🔍</button>
+        </div>
+
+        <div class="header-icons">
+            <div id="openCart" class="icon-btn">🛒</div>
+            <div class="icon-btn">❤️</div>
+        </div>
+    </header>
+    <nav class="category-bar">
+        <div>Kemeja Pria</div>
+        <div>Kemeja Wanita</div>
+        <div>Dress</div>
+        <div>Tunik</div>
+        <div>Baju Anak</div>
+    </nav>
+    <section class="filter-box">
+        <h3>Filter Harga</h3>
+
+        <div id="priceSlider"></div>
+
+        <p>Harga: <span id="priceLabel"></span></p>
+    </section>
+    <section class="product-grid">
+
+        <div class="product-card" data-price="150000">
+            <img src="https://via.placeholder.com/200" alt="">
+            <h4>Abaya Amara</h4>
+            <p class="price">Rp 150.000</p>
+            <p class="sold">1.2RB Terjual</p>
+            <button class="addToCart">Tambah ke Keranjang</button>
+        </div>
+
+        <div class="product-card" data-price="90000">
+            <img src="https://via.placeholder.com/200" alt="">
+            <h4>Tunik Alena</h4>
+            <p class="price">Rp 75.000</p>
+            <p class="sold">3.4RB Terjual</p>
+            <button class="addToCart">Tambah ke Keranjang</button>
+        </div>
+        <div class="product-card" data-price="350000">
+            <img src="https://via.placeholder.com/200" alt="">
+            <h4>Kemeja Anaya</h4>
+            <p class="price">Rp 40.000</p>
+            <p class="sold">8.1RB Terjual</p>
+            <button class="addToCart">Tambah ke Keranjang</button>
+        </div>
+
+        <div class="product-card" data-price="250000">
+            <img src="https://via.placeholder.com/200" alt="">
+            <h4>Abaya Malaysia</h4>
+            <p class="price">Rp 250.000</p>
+            <p class="sold">952 Terjual</p>
+            <button class="addToCart">Tambah ke Keranjang</button>
+        </div>
+
+        <div class="product-card" data-price="350000">
+            <img src="https://via.placeholder.com/200" alt="">
+            <h4>Tunik Belinda</h4>
+            <p class="price">Rp 200.000</p>
+            <p class="sold">8.1RB Terjual</p>
+            <button class="addToCart">Tambah ke Keranjang</button>
+        </div>
+
+        <div class="product-card" data-price="250000">
+            <img src="https://via.placeholder.com/200" alt="">
+            <h4>Abaya Laki</h4>
+            <p class="price">Rp 105.000</p>
+            <p class="sold">952 Terjual</p>
+            <button class="addToCart">Tambah ke Keranjang</button>
+        </div>
+
+        <div class="product-card" data-price="250000">
+            <img src="https://via.placeholder.com/200" alt="">
+            <h4>Kemeja Almira</h4>
+            <p class="price">Rp 215.000</p>
+            <p class="sold">952 Terjual</p>
+            <button class="addToCart">Tambah ke Keranjang</button>
+        </div>
+
+    </section>
+    <div id="cartDialog" title="Keranjang Belanja">
+        <ul id="cartItems"></ul>
+        <hr>
+        <p>Total: Rp <span id="cartTotal">0</span></p>
+    </div>
+
+    <script src="script.js"></script>
+
+</html>
