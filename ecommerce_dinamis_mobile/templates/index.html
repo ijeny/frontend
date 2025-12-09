@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>RAJEZworld - Mobile Modern</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Search Bar Modern */
+        .search-box {
+            background-color: #f1f1f1;
+            padding: 8px 12px;
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        /* Kategori Icon Style */
+        .cat-icon {
+            width: 55px;
+            height: 55px;
+            background-color: #f7f7f7;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+        }
+
+        /* Product Card Modern */
+        .product-card {
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .product-card img {
+            height: 150px;
+            object-fit: cover;
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: #ffffff;
+            border-top: 1px solid #ccc;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 13px;
+            z-index: 999;
+        }
+
+        .bottom-nav a {
+            color: #777;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .bottom-nav a.active {
+            color: #0d6efd;
+        }
+
+        /* Dark Mode Fix */
+        body.dark-mode .bottom-nav {
+            background-color: #1e1e1e;
+            border-color: #333;
+        }
+
+        body.dark-mode .cat-icon {
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- app bar -->
+    <nav class="navbar navbar-dark bg-dark p-2 shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <span class="navbar-brand fw-bold fs-5">RAJEZworld</span>
+            <button id="drkModeToggle" class="btn btn-outline-light btn-sm">🌙</button>
+        </div>
+    </nav>
+
+    <!-- search bar -->
+    <div class="container mt-2">
+        <input type="text" class="search-box" placeholder="Cari produk..." />
+    </div>
+
+    <!-- slider banner -->
+    <div id="banner" class="carousel slide mt-3" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item.active">
+                <img src="" class="d-block w-100 rounded" style="height: 150px; object-fit: cover;">
+            </div>
+            <div class="carousel-item">
+                <img src="" class="d-block w-100 rounded" style="height: 150px; object-fit: cover;">
+            </div>
+        </div>
+    </div>
+
+    <!-- kategori -->
+    <div class="container mt-4">
+        <div class="row text-center g-3">
+
+            <div class="col-3">
+                <div class="cat-icon">👔</div>
+                <small>Kemeja</small>
+            </div>
+            <div class="col-3">
+                <div class="cat-icon">👚</div>
+                <small>Tunik</small>
+            </div>
+            <div class="col-3">
+                <div class="cat-icon">👗</div>
+                <small>Dress</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- produk -->
+    <div class="container mt-4">
+        <h6 class="fw-bold mb-2">Rekomendasi Untuk Anda</h6>
+        <div class="row g-3">
+            {% for product in products %}
+            <div class="col-6">
+                <div class="product-card shadow-sm">
+                    <img src="{{product.image}}" class="w-50">
+                    <div class="p-2">
+                        <small class="fw-semibold d-block">{{product.name}}</small>
+                        <small class="text-primary fw-bold d-block">Rp {{product.price}}</small>
+                        <a href="/product/{{product.id}}" class="btn btn-primary btn-sm w-100 mt-1">Detail</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <br>
+
+    <!-- bottom navigation -->
+    <div class="bottom-nav">
+        <a href="/" class="active">
+            <div>🏠</div>
+            Home
+        </a>
+        <a href="/" class="active">
+            <div>🛒</div>
+            Cart
+        </a>
+        <a href="/" class="active">
+            <div>👤</div>
+            Profile
+        </a>
+    </div>
+
+    <!-- Dark Mode Script -->
+    <script>
+        const body = document.body;
+        const toggle = document.getElementById("darkModeToggle");
+
+        if (localStorage.getItem("darkMode") === "enabled") enableDarkMode();
+
+        toggle.addEventListener("click", () => {
+            body.classList.contains("dark-mode") ? disableDarkMode() : enableDarkMode();
+        });
+
+        function enableDarkMode() {
+            body.classList.add("dark-mode");
+            document.querySelectorAll(".navbar, .card, .product-card, .cat-icon")
+                .forEach(el => el.classList.add("dark-mode"));
+            localStorage.setItem("darkMode", "enabled");
+            toggle.innerHTML = "🌙";
+        }
+
+        function disableDarkMode() {
+            body.classList.remove("dark-mode");
+            document.querySelectorAll(".navbar, .card, .product-card, .cat-icon")
+                .forEach(el => el.classList.remove("dark-mode"));
+            localStorage.setItem("darkMode", "disabled");
+            toggle.innerHTML = "🌞";
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
