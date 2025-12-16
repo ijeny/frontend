@@ -1,0 +1,303 @@
+/* INDEX */
+
+body {
+  padding-top: 70px;
+}
+
+/* dark mode*/
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+/* navbar light mode */
+body:not(.dark-mode) .navbar {
+  background-color: #ffffff !important;
+}
+
+body:not(.dark-mode) .navbar .navbar-brand,
+body:not(.dark-mode) .navbar button {
+  color: #f5afaf !important;
+}
+
+/* navbar dark mode */
+body.dark-mode .navbar {
+  background-color: #140008 !important;
+}
+
+body.dark-mode .navbar .navbar-brand,
+body.dark-mode .navbar button {
+  color: #f5afaf !important;
+}
+
+/* search box */
+.search-box {
+  background-color: #f1f1f1;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1px solid #ffa4a4;
+  width: 50%;
+}
+
+body.dark-mode .search-box {
+  background-color: #1e1e1e;
+  border-color: #333;
+  color: #ffffff;
+}
+
+/* kategori icon */
+.cat-icon {
+  width: 56px;
+  height: 56px;
+  background-color: #fffaf8;
+  border-radius: 50%;
+  border: 2px solid #fff5f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  color: #850e35;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+body.dark-mode .cat-icon:hover {
+  background-color: #3a3a3a;
+  box-shadow: 0 8px 18px rgba(245, 175, 175, 0.35);
+}
+
+.cat-icon:active {
+  transform: scale(0.95);
+}
+
+.cat-icon:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 18px rgba(133, 14, 53, 0.25);
+  background-color: #fff1ee;
+}
+
+small {
+  color: #850e35;
+  font-weight: 500;
+}
+
+body.dark-mode small {
+  color: #f5afaf;
+}
+
+/* product card */
+.product-card {
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(10px);
+}
+
+body.dark-mode .product-card {
+  background-color: #1e1e1e;
+}
+
+.product-card img {
+  height: 400px;
+  object-fit: cover;
+}
+
+/* product info */
+.product-info {
+  background-color: #fcf5ee;
+  color: #850e35;
+}
+
+body.dark-mode .product-info {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+.namaBaju,
+.harga,
+.rekom {
+  color: #850e35;
+}
+
+body.dark-mode .namaBaju,
+body.dark-mode .harga,
+body.dark-mode .rekom {
+  color: #f5afaf;
+}
+
+.rekom {
+  font-size: larger;
+  text-align: center;
+}
+
+/* bottom nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #ffffff;
+  border-top: 1px solid #f8e5e5;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 13px;
+  z-index: 999;
+}
+
+.bottom-nav a {
+  color: #ffa4a4;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+}
+
+.bottom-nav a.active {
+  color: #a45555;
+}
+
+body.dark-mode .bottom-nav {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+body.dark-mode .bottom-nav a {
+  color: #f1bcbc;
+}
+
+body.dark-mode .bottom-nav a.active {
+  color: #ffffff;
+}
+
+/* cart */
+.keranjang {
+  color: #a45555;
+  text-align: center;
+}
+
+body.dark-mode .keranjang {
+  color: #f5afaf;
+}
+
+/* product detail */
+
+/* Sticky Bottom Bar */
+.bottom-action {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  z-index: 999;
+}
+
+body.dark-mode .bottom-action {
+  background-color: #1e1e1e !important;
+  border-color: #333 !important;
+}
+
+.bottom-action .btn {
+  flex: 1;
+  border-radius: 10px;
+}
+
+.product-img {
+  width: 100%;
+  max-width: 420px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .product-img {
+    height: 350px;
+  }
+}
+
+.info-card {
+  background-color: #ffffff;
+}
+
+body.dark-mode .info-card {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+/* product detail */
+
+.namaDetail {
+  color: #850e35;
+  font-size: 35px;
+}
+
+.hargaDetail {
+  color: #850e35;
+  font-size: 20px;
+}
+
+.deskProduk {
+  color: #850e35;
+}
+
+body.dark-mode .namaDetail,
+body.dark-mode .hargaDetail,
+body.dark-mode .deskProduk {
+  color: #f5afaf;
+}
+
+.masukKeranjang {
+  background-color: #fcf5ee;
+  color: #850e35;
+  border-color: #850e35;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+body.dark-mode .masukKeranjang {
+  background-color: #262424;
+  color: #f5afaf;
+  border-color: #850e35;
+}
+
+/* CART */
+.CO {
+  background-color: #fcf5ee;
+  color: #850e35;
+}
+
+.namaCart {
+  color: #850e35;
+}
+
+.hargaCart {
+  color: #850e35;
+}
+
+/* CO */
+
+.COberhasil,
+.makasi {
+  color: #850e35;
+}
+
+body.dark-mode .COberhasil,
+body.dark-mode .makasi{
+  color: #f5afaf;
+} 
+
+.kembali {
+  background-color: #fcf5ee;
+  color: #850e35;
+  border: 1px solid #850e35;
+}
