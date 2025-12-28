@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Barang</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1>Edit Barang</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label>Kode Barang</label>
+                <input type="text" class="form-control" value="{{ barang.kode_baju }}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Nama Barang</label>
+                <input type="text" name="nama_baju" class="form-control" value="{{ barang.nama_baju }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Ukuran</label>
+                <input type="text" name="ukuran" class="form-control" value="{{ barang.ukuran }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Warna</label>
+                <input type="text" name="warna" class="form-control" value="{{ barang.warna }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Kategori</label>
+                <select name="kategori" class="form-control" required>
+                    <option value="atasan" {{ 'selected' if barang.kategori=='atasan' else '' }}>Atasan</option>
+                    <option value="muslim" {{ 'selected' if barang.kategori=='muslim' else '' }}>Muslim</option>
+                    <option value="dress" {{ 'selected' if barang.kategori=='dress' else '' }}>Dress</option>
+                    <option value="outer" {{ 'selected' if barang.kategori=='outer' else '' }}>Outer</option>
+                    <option value="anak-anak" {{ 'selected' if barang.kategori=='anak-anak' else '' }}>Anak-Anak</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Stok</label>
+                <input type="number" name="stok" class="form-control" value="{{ barang.stok }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Harga</label>
+                <input type="number" name="harga" class="form-control" value="{{ barang.harga }}" required>
+            </div>
+
+            {% if barang.filename %}
+            <div class="form-group">
+                <label>Foto Saat Ini</label><br>
+                <img src="{{ url_for('static', filename='img/' ~ barang.filename) }}" width="150" class="img-thumbnail">
+            </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label>Ganti Foto (opsional)</label>
+                <input type="file" name="foto" class="form-control-file">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ url_for('admin_index') }}" class="btn btn-secondary">
+                Kembali
+            </a>
+        </form>
+    </div>
+</body>
+
+</html>
