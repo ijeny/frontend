@@ -128,17 +128,17 @@ def checkout_success():
 # CO saat proses transaksi
 @app.route("/checkout", methods=["POST"])
 def checkout_process():
-    print("🔥 CHECKOUT FUNCTION DIPANGGIL 🔥")
+    print("CHECKOUT FUNCTION DIPANGGIL")
 
     if "user" not in session:
         print("❌ USER BELUM LOGIN")
         return redirect(url_for("login"))
 
     cart = session.get("cart")
-    print("🛒 CART SESSION:", cart)
+    print(" CART SESSION:", cart)
 
     if not cart or not isinstance(cart, dict):
-        print("❌ CART KOSONG / BUKAN DICT")
+        print("CART KOSONG / BUKAN DICT")
         return redirect(url_for("cart"))
 
     try:
@@ -147,9 +147,9 @@ def checkout_process():
         total = 0
         items = []
 
-        # ===== VALIDASI + AMBIL DATA PRODUK =====
+        # validasi + ambil data produk
         for kode_baju, qty in cart.items():
-            print(f"➡️ ITEM: {kode_baju} | QTY: {qty}")
+            print(f"ITEM: {kode_baju} | QTY: {qty}")
 
             cur.execute("""
                 SELECT nama_baju, harga, stok
@@ -158,15 +158,15 @@ def checkout_process():
             """, (kode_baju,))
             product = cur.fetchone()
 
-            print("📦 DATA DB:", product)
+            print("DATA DB:", product)
 
             if not product:
-                print("❌ PRODUK TIDAK DITEMUKAN")
+                print("PRODUK TIDAK DITEMUKAN")
                 db.rollback()
                 return redirect(url_for("cart"))
 
             if product["stok"] < qty:
-                print("❌ STOK TIDAK CUKUP")
+                print("STOK TIDAK CUKUP")
                 db.rollback()
                 return redirect(url_for("cart"))
 
@@ -181,20 +181,20 @@ def checkout_process():
                 "subtotal": subtotal
             })
 
-        print("💰 TOTAL ORDER:", total)
+        print("TOTAL ORDER:", total)
 
-        # ===== INSERT ORDERS =====
-        print("📝 INSERT ORDERS:", session["user"], total)
+        # insert order
+        print("INSERT ORDERS:", session["user"], total)
         cur.execute(
             "INSERT INTO orders (username, total) VALUES (%s, %s)",
             (session["user"], total)
         )
         order_id = cur.lastrowid
-        print("🆔 ORDER ID:", order_id)
+        print("ORDER ID:", order_id)
 
-        # ===== INSERT ORDER ITEMS + UPDATE STOK =====
+        # insert order item + update stok
         for item in items:
-            print("📥 INSERT ITEM:", item)
+            print("INSERT ITEM:", item)
 
             cur.execute("""
                 INSERT INTO order_items
@@ -218,17 +218,17 @@ def checkout_process():
 
         db.commit()
         cur.close()
-        print("✅ TRANSACTION COMMIT")
+        print("TRANSACTION COMMIT")
 
-        # ===== CLEAR CART =====
+        # bersihin keranjang
         session.pop("cart", None)
         session.modified = True
-        print("🧹 CART DIBERSIHKAN")
+        print("CART DIBERSIHKAN")
 
         return redirect(url_for("checkout_success"))
 
     except Exception as e:
-        print("❌ ERROR CHECKOUT:", type(e).__name__, e)
+        print("ERROR CHECKOUT:", type(e).__name__, e)
         db.rollback()
         return redirect(url_for("cart"))
 
@@ -387,4 +387,5 @@ def admin_delete(kode_baju):
     return redirect(url_for("admin_index"))
 
 if __name__ == "__main__":
+
     app.run(debug=True)
