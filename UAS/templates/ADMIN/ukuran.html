@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Manajemen Ukuran</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+
+        <h3 class="mb-3">Manajemen Ukuran</h3>
+
+        <form method="POST" class="form-inline mb-3">
+
+            <input type="text" name="nama_ukuran" class="form-control mr-2" placeholder="Contoh: XXL" required>
+
+            <button class="btn btn-primary mr-3">Tambah</button>
+
+            <a href="{{ url_for('admin_index') }}" class="btn btn-info">
+                ← Kembali
+            </a>
+
+        </form>
+
+        <table class="table table-bordered">
+
+            <thead class="thead-light text-center">
+                <tr>
+                    <th>ID</th>
+                    <th>Ukuran</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody class="text-center">
+                {% for u in data_ukuran %}
+                <tr>
+                    <td>{{ u.id }}</td>
+                    <td>{{ u.nama_ukuran }}</td>
+                    <td>
+                        <a href="{{ url_for('delete_ukuran', id=u.id) }}" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Hapus ukuran?')">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Produk</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+
+        <h2 class="text-center mb-4">Daftar Produk Toko Baju</h2>
+
+        <!-- BAR ATAS -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                ← Ke User
+            </a>
+
+            <div>
+                <a href="{{ url_for('add') }}" class="btn btn-primary mr-2">
+                    Tambah Barang
+                </a>
+                <a href="{{ url_for('ukuran') }}" class="btn btn-info">
+                    Kelola Ukuran
+                </a>
+            </div>
+
+        </div>
+
+        <!-- FILTER -->
+        <form method="GET" action="{{ url_for('admin_index') }}" class="form-row mb-3">
+
+            <div class="col-md-6">
+                <input type="text" name="q" class="form-control" placeholder="Cari kode / nama"
+                    value="{{ request.args.get('q','') }}">
+            </div>
+
+            <div class="col-md-3">
+                <select name="size" class="form-control">
+                    <option value="">Semua Ukuran</option>
+                    {% for s in sizes %}
+                    <option value="{{ s.id }}" {% if request.args.get('size')==s.id|string %}selected{% endif %}>
+                        {{ s.nama_ukuran }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-block">Filter</button>
+            </div>
+
+        </form>
+
+        <!-- TABEL -->
+        <table class="table table-bordered table-striped text-center">
+
+            <thead class="thead-light">
+                <tr>
+                    <th>Kode</th>
+                    <th>Nama</th>
+                    <th>Ukuran</th>
+                    <th>Warna</th>
+                    <th>Stok</th>
+                    <th>Harga</th>
+                    <th>Foto</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for brg in dtstok %}
+                <tr>
+                    <td>{{ brg.kode_baju }}</td>
+                    <td>{{ brg.nama_baju }}</td>
+                    <td>{{ brg.nama_ukuran }}</td>
+                    <td>{{ brg.warna }}</td>
+                    <td>{{ brg.stok }}</td>
+                    <td>Rp {{ "{:,}".format(brg.harga) }}</td>
+                    <td>
+                        {% if brg.filename %}
+                        <img src="{{ url_for('static', filename='img/' + brg.filename) }}" width="70">
+                        {% else %}
+                        -
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('admin_edit', kode_baju=brg.kode_baju) }}"
+                            class="btn btn-warning btn-sm">Edit</a>
+
+                        <a href="{{ url_for('admin_delete', kode_baju=brg.kode_baju) }}" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Hapus data?')">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+</body>
+
+</html>
